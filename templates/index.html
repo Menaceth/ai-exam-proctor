@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Exam Proctor Dashboard</title>
+    <!-- Add the Google Font first -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Make sure this path is correct -->
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>AI Exam Proctor Dashboard</h1>
+            <div class="status-badge" id="connection-status">Initializing...</div>
+        </div>
+
+        <div class="time-info">
+            <div>
+                <span>Current UTC Time:</span>
+                <strong id="current-time">2025-10-14 13:49:15</strong>
+            </div>
+            <div>
+                <span>Last Updated:</span>
+                <strong id="last-update">Never</strong>
+            </div>
+            <div>
+                <span>User:</span>
+                <strong id="current-user">Menaceth</strong>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="video-container">
+                <video id="webcam-feed" class="video-feed" autoplay playsinline></video>
+            </div>
+
+            <div class="metrics-container">
+                <div class="metric-card">
+                    <div class="metric-label">Faces Detected</div>
+                    <div class="metric-value" id="faces-detected">0</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Looking Away</div>
+                    <div class="metric-value" id="looking-away">No</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Multiple Faces</div>
+                    <div class="metric-value" id="multiple-faces">No</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Unauthorized Objects</div>
+                    <div class="metric-value" id="unauthorized-objects">None</div>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
