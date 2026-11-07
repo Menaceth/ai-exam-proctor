@@ -2,6 +2,7 @@ import os
 import csv
 import datetime
 from pathlib import Path
+from dotenv import load_dotenv
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
@@ -12,6 +13,10 @@ import mediapipe as mp
 from ultralytics import YOLO
 import logging
 import traceback
+
+load_dotenv()
+
+EXAM_USER = os.getenv("EXAM_USER", "student")
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -200,7 +205,7 @@ async def websocket_endpoint(websocket: WebSocket):
                 }
                 
                 # Log the event
-                log_exam_event(log_file, "Menaceth", result)
+                log_exam_event(log_file, EXAM_USER, result)
                 
                 await websocket.send_json(result)
                 logger.debug(f"Sent result: {result}")
@@ -217,7 +222,7 @@ async def websocket_endpoint(websocket: WebSocket):
                         "multiple_faces": False
                     }
                     # Log the error event
-                    log_exam_event(log_file, "Menaceth", error_result)
+                    log_exam_event(log_file, EXAM_USER, error_result)
                     await websocket.send_json(error_result)
                 except:
                     break

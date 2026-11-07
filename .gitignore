@@ -1,5 +1,6 @@
 # Virtual environment
 venv/
+ai_exam_proctor/
 
 # Python cache
 __pycache__/
@@ -11,6 +12,11 @@ __pycache__/
 
 # Logs
 *.log
+logs/
+
+# Model weights
+*.pt
+*.pth
 
 # IDE files
 .vscode/
